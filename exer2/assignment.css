@@ -1,0 +1,36 @@
+body {
+    background-color: lavender;
+}
+
+.card {
+    background-color: white;
+    padding: 30px;
+    border: 2px solid pink;
+}
+
+#title {
+    color: purple;
+    font-size: 36px;
+    text-align: center;
+}
+
+.info {
+    color: gray;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: orange;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.box {
+    width: 300px;
+    margin: 0 auto;
+    background-color: lightblue;
+    padding: 25px;
+}
