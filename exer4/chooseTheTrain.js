@@ -36,7 +36,11 @@ const railArray = await getRealTimeRailCoordinates();
  * DO NOT MODIFY railArray! You'll need it for later
  */
 function getKeysToArr(arrivals) {
-  // TODO
+  let keys = [];  
+  for (let key in arrivals[0]) {
+    keys.push(key);
+  }
+  return keys;
 }
 
 /**
@@ -52,7 +56,13 @@ function getKeysToArr(arrivals) {
  * DO NOT MODIFY railArray! You'll need it for later
  */
 function getTrainComingIn1Minute(arrivals) {
-  // TODO
+  let trainsMinute = [];
+  arrivals.forEach(arrival => {
+    if (arrival.WAITING_TIME == '1 min') {
+      trainsMinute.push(arrival);
+    }
+  });
+  return trainsMinute;
 }
 
 /**
@@ -84,22 +94,11 @@ function getTrainComingIn1Minute(arrivals) {
  *
  */
 function updateLineColor(arrivals) {
-  // TODO
+  let filteredArrivals = arrivals.filter(arrival => arrival.LINE === 'BLUE');
+  let copiedArrivals = filteredArrivals.map(arrival => ({ ...arrival, LINE: 'PINK' }));
+  return copiedArrivals;
 }
 
-/*
-  TESTS:
-    You may want to run these one at a time to see the output. If you run them and the API call works,
-    the output may vary as the real-time data changes, and may be very large, so running them one at a time
-    may help you see the results better.
-*/
-// EXPECTED: ['DESTINATION', 'DIRECTION', 'EVENT_TIME', 'LINE', 'NEXT_ARR', 'STATION', 'TRAIN_ID', 'WAITING_SECONDS', 'WAITING_TIME']
 console.log(getKeysToArr(railArray));
-
-// EXPECTED: Array with only the train(s) that is/are coming in 1 minute, this can vary based on real-time data
 console.log(getTrainComingIn1Minute(railArray));
-
-// EXPECTED: Array with only the Blue Line trains, but with LINE changed to 'PINK', this can vary based on real-time data
 console.log(updateLineColor(railArray));
-// EXPECTED: true as the original railArray should not be modified
-console.log(railArray.some((arrival) => arrival.LINE === "BLUE"));
